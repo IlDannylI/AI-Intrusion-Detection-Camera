@@ -1,0 +1,4 @@
+backend/.env
+backend/*.db
+backend/models/
+__pycache__/

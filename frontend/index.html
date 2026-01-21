@@ -28,14 +28,87 @@
             <div class="statistics">
                 <h3>Detection Statistics</h3>
                 <ul>
-                    <li>Intrusions: #</li>
-                    <li>Motion: #</li>
-                    <li>Objects: #</li>
+                    <li>Intrusions: </li>
+                    <li>Motion: </li>
+                    <li>Objects: </li>
                 </ul>
             </div>
         </div>
     </main>
 
-    <script src="scripts.js"></script>
+    <section id="settings" class="settings-section">
+        <h2>Settings</h2>
+        <div class="settings-content">
+            <div class="setting-group">
+                <h3>Camera Settings</h3>
+                <div class="setting-item">
+                    <label for="resolution">Resolution:</label>
+                    <select id="resolution">
+                        <option value="720p">720p</option>
+                        <option value="1080p" selected>1080p</option>
+                        <option value="4k">4K</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="framerate">Frame Rate:</label>
+                    <input type="number" id="framerate" value="30" min="1" max="60">
+                </div>
+            </div>
+            <div class="setting-group">
+                <h3>Detection Settings</h3>
+                <div class="setting-item">
+                    <label for="sensitivity">Sensitivity:</label>
+                    <input type="range" id="sensitivity" min="1" max="10" value="5">
+                </div>
+                <div class="setting-item">
+                    <label for="detection-zones">Detection Zones:</label>
+                    <button id="configure-zones">Configure Zones</button>
+                </div>
+            </div>
+            <div class="setting-group">
+                <h3>Notifications</h3>
+                <div class="setting-item">
+                    <label for="email-alerts">
+                        <input type="checkbox" id="email-alerts" checked> Email Alerts
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label for="push-notifications">
+                        <input type="checkbox" id="push-notifications" checked> Push Notifications
+                    </label>
+                </div>
+            </div>
+            <button class="save-settings">Save Settings</button>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>About</h2>
+        <div class="about-content">
+            <div class="about-item">
+                <h3>AI Intrusion Detection Camera</h3>
+                <p>This is a survillence system that leverages an AI model to help it detect intruders from stealing your package, providing real time notifications. The model selected for this project is "coming soon".</p>
+            </div>
+            <div class="about-item">
+                <h3>Features</h3>
+                <ul>
+                    <li>Real-time video monitoring</li>
+                    <li>AI-powered motion detection</li>
+                    <li>Object recognition and tracking</li>
+                    <li>Automated alerts and notifications</li>
+                </ul>
+            </div>
+            <div class="about-item">
+                <h3>Version</h3>
+                <p>Version 1.0.0</p>
+            </div>
+            <div class="about-item">
+                <h3>Developer</h3>
+                <p>Developed by AI Camera Group </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/scripts.js"></script>
 </body>
 </html>

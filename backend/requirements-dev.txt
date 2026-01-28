@@ -1,5 +1,4 @@
 flask
-picamera2
 opencv-python
 numpy
 python-dotenv

@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    timestamp TEXT NOT NULL,
+    motion_area INTEGER NOT NULL,
+    snapshot TEXT NOT NULL
+);

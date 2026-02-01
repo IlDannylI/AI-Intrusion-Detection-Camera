@@ -1,0 +1,76 @@
+{
+  "events": [
+    {
+      "id": 9,
+      "type": "intrusion",
+      "snapshot": "motion_20260131_205245.jpg",
+      "timestamp": "2026-01-31T20:52:45.899338",
+      "people": 1,
+      "motion_area": 134612.5
+    },
+    {
+      "id": 8,
+      "type": "intrusion",
+      "snapshot": "motion_20260131_205242.jpg",
+      "timestamp": "2026-01-31T20:52:42.907512",
+      "people": 1,
+      "motion_area": 128420.0
+    },
+    {
+      "id": 7,
+      "type": "intrusion",
+      "snapshot": "motion_20260131_205239.jpg",
+      "timestamp": "2026-01-31T20:52:39.884680",
+      "people": 1,
+      "motion_area": 162882.0
+    },
+    {
+      "id": 6,
+      "type": "intrusion",
+      "snapshot": "motion_20260131_205236.jpg",
+      "timestamp": "2026-01-31T20:52:36.817516",
+      "people": 1,
+      "motion_area": 117672.5
+    },
+    {
+      "id": 5,
+      "type": "intrusion",
+      "snapshot": "motion_20260131_205233.jpg",
+      "timestamp": "2026-01-31T20:52:33.759431",
+      "people": 1,
+      "motion_area": 74802.5
+    },
+    {
+      "id": 4,
+      "type": "intrusion",
+      "snapshot": "motion_20260131_205230.jpg",
+      "timestamp": "2026-01-31T20:52:30.687474",
+      "people": 1,
+      "motion_area": 126840.5
+    },
+    {
+      "id": 3,
+      "type": "intrusion",
+      "snapshot": "motion_20260131_205227.jpg",
+      "timestamp": "2026-01-31T20:52:27.723099",
+      "people": 1,
+      "motion_area": 69279.5
+    },
+    {
+      "id": 2,
+      "type": "intrusion",
+      "snapshot": "motion_20260131_205224.jpg",
+      "timestamp": "2026-01-31T20:52:24.668537",
+      "people": 1,
+      "motion_area": 150178.5
+    },
+    {
+      "id": 1,
+      "type": "intrusion",
+      "snapshot": "motion_20260131_205221.jpg",
+      "timestamp": "2026-01-31T20:52:21.656049",
+      "people": 1,
+      "motion_area": 1521.0
+    }
+  ]
+}

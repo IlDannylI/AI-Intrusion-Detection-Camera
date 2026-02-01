@@ -1,34 +1,11 @@
 from flask import Blueprint, Response, jsonify
-import cv2
-
-from backend.camera.camera_controller import CameraController
+from backend.camera.stream import generate_frames
+import json
+import os
 
 api = Blueprint("api", __name__)
-camera = CameraController()
 
-
-@api.route("/api/stats")
-def stats():
-    return jsonify({
-        "intrusions": 0,
-        "motion": 0,
-        "objects": 0
-    })
-
-
-def generate_frames():
-    while True:
-        frame = camera.get_frame()
-        success, buffer = cv2.imencode(".jpg", frame)
-        if not success:
-            continue
-
-        yield (
-            b"--frame\r\n"
-            b"Content-Type: image/jpeg\r\n\r\n"
-            + buffer.tobytes()
-            + b"\r\n"
-        )
+EVENTS_FILE = "backend/events/events.json"
 
 
 @api.route("/api/stream")
@@ -37,3 +14,28 @@ def stream():
         generate_frames(),
         mimetype="multipart/x-mixed-replace; boundary=frame"
     )
+
+
+@api.route("/api/events")
+def get_events():
+    if not os.path.exists(EVENTS_FILE):
+        return jsonify({"events": []})
+
+    with open(EVENTS_FILE, "r") as f:
+        data = json.load(f)
+
+    return jsonify(data)
+
+
+@api.route("/api/stats")
+def get_stats():
+    if not os.path.exists(EVENTS_FILE):
+        return jsonify({"motion": False, "area": 0})
+
+    with open(EVENTS_FILE, "r") as f:
+        data = json.load(f)
+
+    return jsonify({
+        "motion": len(data.get("events", [])) > 0,
+        "area": data["events"][0].get("motion_area", 0) if data.get("events") else 0
+    })

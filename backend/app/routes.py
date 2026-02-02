@@ -21,8 +21,11 @@ def get_events():
     if not os.path.exists(EVENTS_FILE):
         return jsonify({"events": []})
 
-    with open(EVENTS_FILE, "r") as f:
-        data = json.load(f)
+    try:
+        with open(EVENTS_FILE, "r") as f:
+            data = json.load(f)
+    except json.JSONDecodeError:
+        return jsonify({"events": []})
 
     return jsonify(data)
 
@@ -30,12 +33,23 @@ def get_events():
 @api.route("/api/stats")
 def get_stats():
     if not os.path.exists(EVENTS_FILE):
-        return jsonify({"motion": False, "area": 0})
+        return jsonify({
+            "motion": False,
+            "area": 0
+        })
 
-    with open(EVENTS_FILE, "r") as f:
-        data = json.load(f)
+    try:
+        with open(EVENTS_FILE, "r") as f:
+            data = json.load(f)
+    except json.JSONDecodeError:
+        return jsonify({
+            "motion": False,
+            "area": 0
+        })
+
+    events = data.get("events", [])
 
     return jsonify({
-        "motion": len(data.get("events", [])) > 0,
-        "area": data["events"][0].get("motion_area", 0) if data.get("events") else 0
+        "motion": len(events) > 0,
+        "area": events[0].get("motion_area", 0) if events else 0
     })

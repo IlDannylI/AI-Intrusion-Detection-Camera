@@ -1,20 +1,24 @@
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for hash navigation links only; external links navigate normally
     const navLinks = document.querySelectorAll('.header nav a');
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
+            const href = this.getAttribute('href') || '';
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetSection = document.getElementById(targetId);
 
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
+            // otherwise allow normal navigation to other pages
         });
     });
 
@@ -45,15 +49,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Load saved settings on page load
+    // Load saved settings on pages that have settings controls
     const savedSettings = localStorage.getItem('cameraSettings');
     if (savedSettings) {
         const settings = JSON.parse(savedSettings);
-        document.getElementById('resolution').value = settings.resolution;
-        document.getElementById('framerate').value = settings.framerate;
-        document.getElementById('sensitivity').value = settings.sensitivity;
-        document.getElementById('email-alerts').checked = settings.emailAlerts;
-        document.getElementById('push-notifications').checked = settings.pushNotifications;
+        const resolutionEl = document.getElementById('resolution');
+        const framerateEl = document.getElementById('framerate');
+        const sensitivityEl = document.getElementById('sensitivity');
+        const emailAlertsEl = document.getElementById('email-alerts');
+        const pushNotificationsEl = document.getElementById('push-notifications');
+
+        if (resolutionEl) resolutionEl.value = settings.resolution;
+        if (framerateEl) framerateEl.value = settings.framerate;
+        if (sensitivityEl) sensitivityEl.value = settings.sensitivity;
+        if (emailAlertsEl) emailAlertsEl.checked = settings.emailAlerts;
+        if (pushNotificationsEl) pushNotificationsEl.checked = settings.pushNotifications;
     }
 
     // Configure zones button (placeholder functionality)
@@ -63,4 +73,23 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Zone configuration feature coming soon!');
         });
     }
+
+    // Detection statistics: simplified static zeros for table view
+    const statTotalEl = document.getElementById('val-total');
+    const statKnownEl = document.getElementById('val-known');
+    const statUnknownEl = document.getElementById('val-unknown');
+
+    if (statTotalEl) statTotalEl.textContent = '0';
+    if (statKnownEl) statKnownEl.textContent = '0';
+    if (statUnknownEl) statUnknownEl.textContent = '0';
+
+    ['trend-total', 'trend-known', 'trend-unknown'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '+0%';
+    });
+
+    ['bar-total', 'bar-known', 'bar-unknown'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.width = '0%';
+    });
 });

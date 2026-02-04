@@ -1,4 +1,4 @@
-/* Reset and base styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
     color: #333;
 }
 
-/* Simple header */
+
 .header {
     background-color: #888; 
     padding: 1rem;
@@ -52,7 +52,7 @@ main {
 .dashboard-content {
     display: flex;
     gap: 1rem;
-    height: 400px; /* Adjust height as needed */
+    height: 400px; 
 }
 
 .live-feed, .statistics {
@@ -78,7 +78,123 @@ main {
     color: #666;
 }
 
-/* Settings Section */
+/* Statistics styles */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+.stat-card {
+    background: linear-gradient(180deg, #fff 0%, #fbfbfb 100%);
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+}
+
+.stat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.stat-icon {
+    font-size: 1.25rem;
+}
+
+.stat-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0.5rem 0;
+}
+
+.stat-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stat-trend {
+    font-size: 0.9rem;
+    color: #2e7d32; /* green by default */
+    font-weight: 600;
+}
+
+.stat-trend.down {
+    color: #c62828;
+}
+
+.stat-bar {
+    flex: 1;
+    height: 8px;
+    background: #eee;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #66bb6a);
+    width: 0%;
+    transition: width 800ms ease;
+}
+
+/* Table-style statistics */
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.75rem;
+}
+
+.stats-table thead th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+    color: #444;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.stats-table tbody td {
+    padding: 0.65rem 0.75rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.stats-table .stat-value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.stats-table .stat-trend {
+    font-weight: 600;
+    color: #2e7d32;
+}
+
+.stats-table .stat-trend.down {
+    color: #c62828;
+}
+
+.stat-bar-cell {
+    width: 40%;
+}
+
+.stat-bar {
+    height: 10px;
+    background: #eee;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+
 .settings-section, .about-section {
     padding: 2rem;
     background-color: white;

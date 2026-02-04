@@ -1,4 +1,14 @@
-backend/.env
-backend/*.db
-backend/models/
+# Runtime snapshots
+backend/snapshots/*
+backend/evidence/snapshots/*
+
+# Runtime data
+backend/db/events.db
+
+# Python cache
 __pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env

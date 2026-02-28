@@ -32,35 +32,37 @@
                         <tr>
                             <th>Metric</th>
                             <th>Value</th>
-                            <th>Trend</th>
-                            <th>Activity</th>
                         </tr>
                     </thead>
-                        <tbody>
-                            <tr id="row-total">
-                                <td>Total Objects/People Detected</td>
-                                <td class="stat-value" id="val-total">0</td>
-                                <td class="stat-trend" id="trend-total">+0%</td>
-                                <td class="stat-bar-cell"><div class="stat-bar"><div class="stat-bar-fill" id="bar-total" style="width:0%"></div></div></td>
-                            </tr>
-                            <tr id="row-known">
-                                <td>Known Guests</td>
-                                <td class="stat-value" id="val-known">0</td>
-                                <td class="stat-trend" id="trend-known">+0%</td>
-                                <td class="stat-bar-cell"><div class="stat-bar"><div class="stat-bar-fill" id="bar-known" style="width:0%"></div></div></td>
-                            </tr>
-                            <tr id="row-unknown">
-                                <td>Unknown Guests</td>
-                                <td class="stat-value" id="val-unknown">0</td>
-                                <td class="stat-trend" id="trend-unknown">+0%</td>
-                                <td class="stat-bar-cell"><div class="stat-bar"><div class="stat-bar-fill" id="bar-unknown" style="width:0%"></div></div></td>
-                            </tr>
-                        </tbody>
+                    <tbody>
+                        <tr id="row-total">
+                            <td>Total Objects/People Detected</td>
+                            <td class="stat-value" id="val-total">0</td>
+                        </tr>
+                        <tr id="row-known">
+                            <td>Known Guests</td>
+                            <td class="stat-value" id="val-known">0</td>
+                        </tr>
+                        <tr id="row-unknown">
+                            <td>Unknown Guests</td>
+                            <td class="stat-value" id="val-unknown">0</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
     </main>
     <!-- Settings and About moved to their own pages for a cleaner layout -->
+
+    <!-- Camera info section: populated from saved settings (settings.html) -->
+    <section class="settings-section" style="max-width:900px;margin:1rem auto;">
+        <h2>Camera Info</h2>
+        <div class="settings-content">
+            <div class="setting-item"><strong>Resolution:</strong> <span id="ci-resolution">—</span></div>
+            <div class="setting-item"><strong>Frame Rate:</strong> <span id="ci-framerate">—</span> fps</div>
+            <div class="setting-item"><strong>Sensitivity:</strong> <span id="ci-sensitivity">—</span></div>
+        </div>
+    </section>
 
     <script src="js/scripts.js"></script>
 </body>

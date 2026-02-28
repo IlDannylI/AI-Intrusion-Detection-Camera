@@ -66,6 +66,27 @@ document.addEventListener('DOMContentLoaded', function() {
         if (pushNotificationsEl) pushNotificationsEl.checked = settings.pushNotifications;
     }
 
+    // Populate camera info on home page from saved settings
+    const ciResolution = document.getElementById('ci-resolution');
+    const ciFramerate = document.getElementById('ci-framerate');
+    const ciSensitivity = document.getElementById('ci-sensitivity');
+
+    if (ciResolution || ciFramerate || ciSensitivity) {
+        let settingsObj = { resolution: '1080p', framerate: 30, sensitivity: 5 };
+        if (savedSettings) {
+            try {
+                const parsed = JSON.parse(savedSettings);
+                settingsObj = Object.assign(settingsObj, parsed);
+            } catch (e) {
+                // ignore parse errors and use defaults
+            }
+        }
+
+        if (ciResolution) ciResolution.textContent = settingsObj.resolution;
+        if (ciFramerate) ciFramerate.textContent = settingsObj.framerate;
+        if (ciSensitivity) ciSensitivity.textContent = settingsObj.sensitivity;
+    }
+
     // Configure zones button (placeholder functionality)
     const configureZonesBtn = document.getElementById('configure-zones');
     if (configureZonesBtn) {
